@@ -4,6 +4,7 @@ JSON USERS AND DEVICES ANALYSIS (JUDAS) TOOL
 #---------------------------------------------
 # Intro
 #---------------------------------------------
+
 JUDAS is a proof of concept of the latest work I am doing, oriented to the IoT-Forensics research line.
 
 Please, do not hesitate to improve this code and adapt it to your own needs ... also, I am not an expert in software
@@ -17,6 +18,7 @@ Thank you for your interest and enjoy!!!
 #---------------------------------------------
 # JUDAS objective
 #---------------------------------------------
+
 JUDAS creates an interpretation of the context of a digital investigation, starting by processing the JSON files.
 JUDAS will extract the devices and users but following a set of criteria defined during the parsing of these files.
 This uses hooks to read from JSONs and create the objects of the context. At the end only objects with different
@@ -28,6 +30,7 @@ Further details will be published (I hope) soon.
 #---------------------------------------------
 # How to use JUDAS
 #---------------------------------------------
+
 Call the file judas.py to use the GUI. This GUI calls to methods implemented in the files eatingJson and eatingNetwork.
 The file 'eating' contains some methods that can be used to make basic operations with JSONs (e.g., printing).
 
@@ -62,6 +65,7 @@ tool and then help in the reporting.
 #---------------------------------------------
 # Contact
 #---------------------------------------------
+
 Please, any request/comment to my address: nieto@lcc.uma.es
 This is my public profile: https://www.nics.uma.es/nieto
 Thank you for the interest.
