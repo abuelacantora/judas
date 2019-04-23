@@ -8,12 +8,12 @@ JSON USERS AND DEVICES ANALYSIS (JUDAS) TOOL
 JUDAS is a proof of concept of the latest work I am doing, oriented to the IoT-Forensics research line.
 
 Please, do not hesitate to improve this code and adapt it to your own needs ... also, I am not an expert in software
-development, so I hope that those more accustomed with python make their improvements and forgive my mistakes. I'm
+development, so I hope that those more used to work with python make their improvements and forgive my mistakes. I'm
 just learning this language.
 
 If you find this application or my work interesting, please do not forget to reference it.
 
-Thank you for your interest and enjoy!!!
+Thank you very much for your interest and enjoy!!!
 
 #---------------------------------------------
 # JUDAS objective
@@ -22,7 +22,7 @@ Thank you for your interest and enjoy!!!
 JUDAS creates an interpretation of the context of a digital investigation, starting by processing the JSON files.
 JUDAS will extract the devices and users but following a set of criteria defined during the parsing of these files.
 This uses hooks to read from JSONs and create the objects of the context. At the end only objects with different
-identifiers survives and form part of the context. The tool recognise equal items and combines all the information in
+identifiers survives and form part of the context. The taccustomedool recognise equal items and combines all the information in
 a single object. Also, some checks with open source intelligence (OSINT) services are developed.
 
 Further details will be published (I hope) soon.
