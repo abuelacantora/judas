@@ -29,14 +29,14 @@ d3.json("force.json", function(json) {
 
   var node = vis.selectAll("circle.node")
       .data(json.nodes)
-    .enter().append("svg:circle")
+      .enter().append("svg:circle")
       .attr("class", "node")
       .attr("cx", function(d) { return 10-d.x; })
       .attr("cy", function(d) { return d.y; })
       //.attr("r", 15)
       //.style("fill", function(d) { return fill(d.group); })
       .attr("r", function(d) { if (d.group == 0) return 20; return 15-d.group; })
-      .style("fill", function(d) { return d3.hsl(d.colour).brighter(d.group/3); })
+      .style("fill", function(d) { return d3.hsl(d.color).brighter(d.group/3); })
       .style("stroke-width", function(d) { if (d.group === 0) return 4; return 1; })
       .call(force.drag);
           var text = vis.selectAll("text")
@@ -47,7 +47,6 @@ d3.json("force.json", function(json) {
             .text(function(d) { return d.label;}) //d.name; })
             .attr("font-size","10")
             //.attr("stroke", function(d) { return fill(d.color); })
-            .call(force.drag);
 
   node.append("title")
       .text(function(d) { return d.name; });
