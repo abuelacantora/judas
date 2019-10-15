@@ -1,6 +1,13 @@
 # -------
 # judas. JSON Users and Devices AnalySys tool
 # -------
+# @author:      Ana Nieto,
+# @email:       nieto@lcc.uma.es
+# @institution: University of Malaga
+# @country:     Spain
+# @website:     https://www.linkedin.com/in/ana-nieto-72b17718/
+######
+
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from tkinter import *
@@ -717,6 +724,7 @@ class Judas(Frame):
         else:
             return []
 
+
     def loadNetwork(self):
         # 1.- check if we have files to load:
         pf = self.getPathsFiles('.pcap')
@@ -726,6 +734,7 @@ class Judas(Frame):
             self.loadPcap(pf[0]) #one file for now
         else:
             self.writeError('.pcap files not loaded, please check the presence of .pcap files in the default folder', Judas.FILES)
+
 
     def showNetworkInfo(self):
         # Initialise:
@@ -986,7 +995,7 @@ class Judas(Frame):
 
             self.http_handler = self.context.showContext(output=None, objectsofinterest=None, mode=mode)
             res = self.http_handler
-            msg = 'Interactive graph in http://localhost:8000/force/force.html'
+            msg = 'Interactive graph in http://localhost:8000/force/force2.html'
 
         if bool(res):
             self.write(msg, Judas.CONTEXT)

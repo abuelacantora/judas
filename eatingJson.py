@@ -1,3 +1,11 @@
+######
+# @author:      Ana Nieto,
+# @email:       nieto@lcc.uma.es
+# @institution: University of Malaga
+# @country:     Spain
+# @website:     https://www.linkedin.com/in/ana-nieto-72b17718/
+######
+
 import json
 import re
 from abc import ABCMeta, abstractmethod
@@ -2497,8 +2505,8 @@ class User (Anything):
 
     def isInString(self,string):
         "Returns True if the user is represented in the string"
-        re.compile('|'.join(self.getStringsForSearch()))
-        return re.match(string)
+        rx = re.compile('|'.join(self.getStringsForSearch()))
+        return rx.match(string)
 
 
     # ---------------------------------
@@ -2775,6 +2783,70 @@ class Container:
             return 'deepskyblue'
         else:
             return 'blue'
+
+    @staticmethod #a different way for 'color' --> to be used with differnt html formats
+    def getScore(object=None): #.range(["green", "yellow", "red", "blue", "purple", "white"]);
+        if isinstance(object, Device):
+            return 0.5 # red
+        elif isinstance(object, User):
+            return 0.83 # purple
+        elif isinstance(object, Card):
+            return 0.95 #gray
+        elif isinstance(object, Service):
+            return 0 #green
+        elif isinstance(object, Activity):
+            return 0.33 #yellow
+        elif isinstance(object, Action):
+            return 0.4 #orange
+        elif isinstance(object, Route):
+            return 0.83 #purple
+        elif isinstance(object, Address):
+            return 0.6 # purple
+        else:
+            return 1 #'white'
+
+    @staticmethod
+    def getShape(object=None):
+        if isinstance(object, Device): #circle
+            return 'diamond' #'o'
+        elif isinstance(object, User): #square
+            return 'square' #''s'
+        elif isinstance(object, Card):
+            return 'circle' #'v'
+        elif isinstance(object, Service):
+            return 'circle' #'>'
+        elif isinstance(object, Activity): #diamond
+            return 'circle' #'d'
+        elif isinstance(object, Action):
+            return 'circle' #'<'
+        elif isinstance(object, Route):
+            return 'circle' #'p'
+        elif isinstance(object, Address):
+            return 'triangle-down' #'h'
+        else:
+            return 'circle' #'blue'
+
+
+    @staticmethod
+    def getSize(object=None):
+        if isinstance(object, Device): #circle
+            return 40 #'o'
+        elif isinstance(object, User): #square
+            return 40 #''s'
+        elif isinstance(object, Card):
+            return 20 #'v'
+        elif isinstance(object, Service):
+            return 20 #'>'
+        elif isinstance(object, Activity): #diamond
+            return 20 #'d'
+        elif isinstance(object, Action):
+            return 20 #'<'
+        elif isinstance(object, Route):
+            return 20 #'p'
+        elif isinstance(object, Address):
+            return 20 #'h'
+        else:
+            return 10 #'blue'
 
     @staticmethod
     def getGroup(object=None):
@@ -3414,7 +3486,7 @@ class Context:
                     ocontainer = o.getContainer()
                     G1.add_node(ocontainer.getName())
                     G2.add_node(ocontainer.getID(), name=ocontainer.getName(), label=ocontainer.getID(),
-                                group=Container.getGroup(o), colour=Container.getColor(o))
+                                group=Container.getGroup(o), color=Container.getColor(o))
 
                     # Add relationships with other objects:
                     objlist = self.getObjects(o.getRelatedIDs()) # all objects
@@ -3427,7 +3499,8 @@ class Context:
                         G1.add_edge(ocontainer.getName(), o2container.getName())
 
                         G2.add_node(o2container.getID(), name=o2container.getName(), label=o2container.getID(),
-                                    group=Container.getGroup(o2), colour=Container.getColor(o2))
+                                    group=Container.getGroup(o2), color=Container.getColor(o2),
+                                    type=Container.getShape(o2), size=Container.getSize(o2), score=Container.getScore(o2))
                         G2.add_edge(ocontainer.getID(), o2container.getID())
 
             else:
@@ -3451,7 +3524,7 @@ class Context:
             json.dump(d, open('force/force.json', 'w'))
 
             # Serve the file over http to allow for cross origin requests
-            httpd = http_server.load_url('force/force.html')
+            httpd = http_server.load_url('force/force2.html')
 
             return httpd
 
